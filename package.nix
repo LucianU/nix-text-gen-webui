@@ -3,9 +3,9 @@
 , fetchFromGitHub
 }:
 let
-  gradio = python3.pkgs.callPackage ./gradio.nix { };
-  flexgen = python3.pkgs.callPackage ./flexgen.nix { };
-  peft = python3.pkgs.callPackage ./peft.nix { };
+  gradio = python3.pkgs.callPackage ./dependencies/gradio.nix { };
+  flexgen = python3.pkgs.callPackage ./dependencies/flexgen.nix { };
+  peft = python3.pkgs.callPackage ./dependencies/peft.nix { };
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "text-generation-webui";
