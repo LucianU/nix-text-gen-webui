@@ -4,3 +4,4 @@ The goal is to be able to deploy the app as a NixOS service.
 
 # To Do
 - create Derivation for https://github.com/Ch00k/ffmpy
+- create Derivation for https://github.com/PanQiWei/AutoGPTQ/
