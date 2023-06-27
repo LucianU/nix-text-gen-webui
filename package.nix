@@ -6,6 +6,7 @@ let
   gradio = python3.pkgs.callPackage ./dependencies/gradio.nix { };
   flexgen = python3.pkgs.callPackage ./dependencies/flexgen.nix { };
   peft = python3.pkgs.callPackage ./dependencies/peft.nix { };
+  autogptq = python3.pkgs.callPackage ./dependencies/autogptq.nix { };
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "text-generation-webui";
@@ -39,6 +40,7 @@ python3.pkgs.buildPythonApplication rec {
     bitsandbytes
     llama-cpp-python
     gradio
+    autogptq
   ];
 
   meta = with lib; {

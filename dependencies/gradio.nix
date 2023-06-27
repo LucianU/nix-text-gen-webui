@@ -1,4 +1,5 @@
 { lib
+, callPackage
 , buildPythonPackage
 , fetchFromGitHub
 , hatch-fancy-pypi-readme
@@ -31,6 +32,9 @@
 , uvicorn
 , websockets
 }:
+let
+  ffmpy = callPackage ./ffmpy.nix { };
+in
 
 buildPythonPackage rec {
   pname = "gradio";
