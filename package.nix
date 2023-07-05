@@ -3,10 +3,10 @@
 , fetchFromGitHub
 }:
 let
-  gradio = python3.pkgs.callPackage ./pkgs/gradio.nix { };
-  flexgen = python3.pkgs.callPackage ./pkgs/flexgen.nix { };
-  peft = python3.pkgs.callPackage ./pkgs/peft.nix { };
-  autogptq = python3.pkgs.callPackage ./pkgs/autogptq.nix { };
+  gradio = python3.pkgs.callPackage ./pkgs/common/gradio.nix { };
+  flexgen = python3.pkgs.callPackage ./pkgs/common/flexgen.nix { };
+  peft = python3.pkgs.callPackage ./pkgs/common/peft.nix { };
+  autogptq = python3.pkgs.callPackage ./pkgs/linux-nvidia/autogptq.nix { };
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "text-generation-webui";
