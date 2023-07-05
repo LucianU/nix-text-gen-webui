@@ -6,11 +6,11 @@ let
   gradio = python3.pkgs.callPackage ./pkgs/common/gradio.nix { };
   flexgen = python3.pkgs.callPackage ./pkgs/common/flexgen.nix { };
   peft = python3.pkgs.callPackage ./pkgs/common/peft.nix { };
-  autogptq = python3.pkgs.callPackage ./pkgs/linux-nvidia/autogptq.nix { };
+  llama-cpp-python = python3.pkgs.callPackage ./pkgs/common/llama-cpp-python.nix { };
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "text-generation-webui";
-  version = "installers";
+  version = "e0a50fb";
 
   src = fetchFromGitHub {
     owner = "oobabooga";
@@ -37,10 +37,11 @@ python3.pkgs.buildPythonApplication rec {
     scipy
     transformers
     peft
-    bitsandbytes
     llama-cpp-python
     gradio
-    autogptq
+    torch
+    torchaudio
+    torchvision
   ];
 
   meta = with lib; {

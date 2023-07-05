@@ -9,8 +9,6 @@
 , aiohttp
 , altair
 , fastapi
-, ffmpy
-, gradio-client
 , httpx
 , huggingface-hub
 , jinja2
@@ -60,7 +58,6 @@ buildPythonPackage rec {
     altair
     fastapi
     ffmpy
-    gradio-client
     httpx
     huggingface-hub
     jinja2

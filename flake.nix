@@ -15,16 +15,28 @@
 
     let
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
-    in
-    {
-      packages = forAllSystems (system:
+      forAllLinux = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
+      forAllDarwin = nixpkgs.lib.genAttrs [ "aarch64-darwin" ];
+      linuxPackages = forAllLinux (system:
         let
           pkgs = nixpkgs.legacyPackages."${system}";
         in
         {
-          default = pkgs.python3.pkgs.callPackage ./package.nix { };
+          text-generation-webui-nvidia = pkgs.python3.pkgs.callPackage ./linux-nvidia.nix { };
+          text-generation-webui-amd = pkgs.python3.pkgs.callPackage ./linux-amd.nix { };
         }
       );
+      darwinPackages = forAllDarwin (system:
+        let
+          pkgs = nixpkgs.legacyPackages."${system}";
+        in
+        {
+          text-generation-webui = pkgs.python3.pkgs.callPackage ./macos.nix { };
+        }
+      );
+    in
+    {
+      packages = linuxPackages // darwinPackages;
 
       devShells = forAllSystems (system:
         let
