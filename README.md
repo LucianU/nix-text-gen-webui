@@ -4,4 +4,5 @@ This project aims to provide Nix support for [`text-generation-webui`](https://g
 The goal is to be able to deploy the app as a NixOS service.
 
 # To Do
-- build on Linux
+- [ ] build on macOS
+- [ ] build on Linux with AMD
